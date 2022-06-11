@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5739774409348185615
+  m_GuidHigh: 11172841514363339681
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5013580333156791403
+      m_GuidHigh: 4497011072199167106
+    m_SerializedTextureGuid:
+      m_GuidLow: 8562652506905373146
+      m_GuidHigh: 5069996729849849546
+    m_Size: {x: 0.23, y: 0.5428186}
+    m_SpecifySize: 1
+    m_Name: puzzle1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5762136606416764930
+      m_GuidHigh: 8742857764053554110
+    m_SerializedTextureGuid:
+      m_GuidLow: 14881030378836200623
+      m_GuidHigh: 11553909592549207002
+    m_Size: {x: 0.6272402, y: 0.4}
+    m_SpecifySize: 1
+    m_Name: puzzle2
+    m_Texture: {fileID: 0}
