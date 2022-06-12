@@ -1,5 +1,3 @@
-// Original Code from https://github.com/TakashiYoshinaga/GeospatialAPI-Unity-StarterKit
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +14,8 @@ namespace National_Park_AR_Project
         public AREarthManager earthManager;
         public VpsInitializer initializer;
 
+        public SubtitleData subtitleData;
+
         public Text output;
         public Text subtitle;
 
@@ -29,6 +29,10 @@ namespace National_Park_AR_Project
         public GameObject ContentPrefab;
         GameObject displayObject;
         public ARAnchorManager AnchorManager;
+
+        [SerializeField] private GeospatialPose[] locs;
+        [SerializeField] private GameObject[] prefabs;
+        private Dictionary<Double, GameObject> spanwedObjects;
 
         int subNum = 0;
         [SerializeField] private string[] subs;
@@ -61,7 +65,7 @@ namespace National_Park_AR_Project
             {
                 status = "High Tracking Accuracy ";
                 // 오브젝트 스폰
-                if (displayObject == null || displayObject2 == null)
+                if (displayObject == null)
                 {
                     Altitude = pose.Altitude - 1.5f;
                     Quaternion quaternion = Quaternion.AngleAxis(180f - (float)Heading, Vector3.up);
@@ -71,6 +75,22 @@ namespace National_Park_AR_Project
                     if (anchor != null)
                     {
                         displayObject = Instantiate(ContentPrefab, anchor.transform);
+                    }
+                }
+
+                foreach (GeospatialPose loc in locs)
+                {
+                    if (spanwedObjects[loc.Latitude] == null)
+                    {
+                        Altitude = pose.Altitude - 1.5f;
+                        Quaternion quaternion = Quaternion.AngleAxis(180f - (float)Heading, Vector3.up);
+
+                        ARGeospatialAnchor anchor = AnchorManager.AddAnchor(Latitude, Longitude, Altitude, quaternion);
+
+                        if (anchor != null)
+                        {
+                            displayObject = Instantiate(ContentPrefab, anchor.transform);
+                        }
                     }
                 }
             }
@@ -96,6 +116,7 @@ namespace National_Park_AR_Project
 
         void ChangeSubtitle()
         {
+            /*
             subNum++;
             subtitle.text = subs[subNum - 1];
             if (subNum == 1)
@@ -106,6 +127,9 @@ namespace National_Park_AR_Project
             {
                 Invoke("ChangeSubtitle", 4f);
             }
+            */
+            
+            subtitle.text = subtitleData.GetTalkData(subNum, 1);
         }
 
         // Geospatial 확인

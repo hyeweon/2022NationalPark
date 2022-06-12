@@ -12,6 +12,7 @@ public class RaycastController : MonoBehaviour
     private GameObject spawnobject;
 
     public Text subtitle;
+    public GameObject sun;
 
     // Update is called once per frame
     void Update()
@@ -62,6 +63,7 @@ public class RaycastController : MonoBehaviour
 
     void OnFire()
     {
+        sun.SetActive(true);
         subtitle.text = "햇빛을 찾았습니다!";
     }
 }
